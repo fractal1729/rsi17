@@ -1,0 +1,22 @@
+1501223941299	Getting snapshot
+1501223941300	Snapshot successfully recorded
+1501223947430	TreeMapServer created with id 0
+1501223968715	Received PUT request: block000000
+1501223968715	PUT request fulfilled
+1501223969776	Received PUT request: block000001
+1501223969776	Old value replaced successfully.
+1501223969776	PUT request fulfilled
+1501223970807	Received PUT request: block000002
+1501223970807	Old value replaced successfully.
+1501223970807	PUT request fulfilled
+1501223971849	Received PUT request: block000003
+1501223971849	Old value replaced successfully.
+1501223971849	PUT request fulfilled
+1501223972880	Received PUT request: block000004
+1501223972880	Old value replaced successfully.
+1501223972880	PUT request fulfilled
+1501223973911	Received REMOVE request
+1501223973911	Unpacked key: block
+1501223973911	Removed value: 000004
+1501223973911	REMOVE request fulfilled
+1501223973911	Closing log file
