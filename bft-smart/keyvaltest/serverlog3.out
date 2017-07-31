@@ -1,22 +1,5 @@
-1501223948022	Getting snapshot
-1501223948023	Snapshot successfully recorded
-1501223952047	TreeMapServer created with id 3
-1501223968734	Received PUT request: block000000
-1501223968734	PUT request fulfilled
-1501223969782	Received PUT request: block000001
-1501223969782	Old value replaced successfully.
-1501223969783	PUT request fulfilled
-1501223970805	Received PUT request: block000002
-1501223970805	Old value replaced successfully.
-1501223970805	PUT request fulfilled
-1501223971844	Received PUT request: block000003
-1501223971844	Old value replaced successfully.
-1501223971844	PUT request fulfilled
-1501223972884	Received PUT request: block000004
-1501223972884	Old value replaced successfully.
-1501223972884	PUT request fulfilled
-1501223973912	Received REMOVE request
-1501223973912	Unpacked key: block
-1501223973912	Removed value: 000004
-1501223973912	REMOVE request fulfilled
-1501223973912	Closing log file
+1501486326085	Getting snapshot
+1501486326086	Snapshot successfully recorded
+1501486330117	TreeMapServer created with id 3
+1501486339534	Received REMOVE/END request
+1501486339534	Closing log file

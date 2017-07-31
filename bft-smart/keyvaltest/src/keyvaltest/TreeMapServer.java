@@ -25,6 +25,7 @@ public class TreeMapServer extends DefaultRecoverable {
 
     Map<String, String> table;
     PrintWriter logger = null;
+    String currentBlock = "";
 
     public TreeMapServer(int id) throws IOException {
         logger = new PrintWriter(new BufferedWriter(new FileWriter("serverlog"+id+".out")));
@@ -71,7 +72,9 @@ public class TreeMapServer extends DefaultRecoverable {
                 String key = dis.readUTF();
                 String value = dis.readUTF();
                 log("Received PUT request: "+key+condenseBlock(value));
-                String oldValue = table.put(key, value);
+                //String oldValue = table.put(key, value);
+                String oldValue = currentBlock;
+                currentBlock = value;
                 byte[] resultBytes = null;
                 if (oldValue != null) {
                     log("Old value replaced successfully.");
@@ -80,16 +83,17 @@ public class TreeMapServer extends DefaultRecoverable {
                 log("PUT request fulfilled");
                 return resultBytes;
             } else if (reqType == RequestType.REMOVE) {
-                log("Received REMOVE request");
+                log("Received REMOVE/END request");
                 String key = dis.readUTF();
-                log("Unpacked key: "+key);
-                String removedValue = table.remove(key);
-                log("Removed value: "+condenseBlock(removedValue));
+                //log("Unpacked key: "+key);
+                //String removedValue = table.remove(key);
+                String removedValue = currentBlock;
+                //log("Removed value: "+condenseBlock(removedValue));
                 byte[] resultBytes = null;
                 if (removedValue != null) {
                     resultBytes = removedValue.getBytes();
                 }
-                log("REMOVE request fulfilled");
+                //log("REMOVE request fulfilled");
                 log("Closing log file");
                 logger.close();
                 System.exit(1);
@@ -157,7 +161,7 @@ public class TreeMapServer extends DefaultRecoverable {
         try {
             log("Installing snapshot");
             ObjectInput in = new ObjectInputStream(bis);
-            table = (Map<String, String>) in.readObject();
+            currentBlock = (String) in.readObject();
             in.close();
             bis.close();
             log("Snapshot installation successfully complete");
@@ -178,7 +182,7 @@ public class TreeMapServer extends DefaultRecoverable {
             log("Getting snapshot");
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             ObjectOutputStream out = new ObjectOutputStream(bos);
-            out.writeObject(table);
+            out.writeObject(currentBlock);
             out.flush();
             out.close();
             bos.close();

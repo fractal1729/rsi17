@@ -140,9 +140,11 @@ public class MapClient implements Map<String, String> {
             log("REMOVE request succesful");
             log("Closing log file");
             logger.close();
+            System.exit(0);
             return null;
         } catch (IOException ioe) {
             System.out.println("Exception removing value from the hashmap: " + ioe.getMessage());
+            ioe.printStackTrace(System.out);
             log("Exception removing value from the hashmap: "+ioe.getMessage());
             return null;
         }
